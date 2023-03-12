@@ -1,73 +1,96 @@
-const path = require('path')
-const srcPath = path.resolve(__dirname, '../../../src')
-
-const rules = {
-  importOrder: ['error', {
-    alphabetize: {
-      order: 'asc'
-    },
-    groups: [
-      'builtin',
-      'internal',
-      'external',
-      ['sibling', 'parent'],
-      'index',
-      'object',
-      'type'
-    ],
-    'newlines-between': 'never',
-    pathGroups: [{
-      group: 'parent',
-      pattern: '#src/**'
-      // position: 'before'
-    }]
-    // pathGroupsExcludedImportTypes: ['express']
-  }],
-  sortImports: ['error', {
-    ignoreDeclarationSort: true
-  }]
-}
-
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true
-  },
   extends: [
-    'standard'
+    'standard',
+    'next/core-web-vitals',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module'
-  },
+  ignorePatterns: ['scripts'],
+  parser: '@typescript-eslint/parser',
   plugins: [
+    '@typescript-eslint',
     'import',
     'sort-destructure-keys',
     'sort-keys-fix'
   ],
+  root: true,
   rules: {
-    'import/named': 'error',
-    'import/no-duplicates': 'error',
-    'import/no-unresolved': 'error',
-    'import/order': rules.importOrder,
-    'prefer-destructuring': 'error',
-    'sort-destructure-keys/sort-destructure-keys': 'error',
-    'sort-imports': rules.sortImports,
-    'sort-keys-fix/sort-keys-fix': 'error',
-    'semi': ["error", "always"],
-    'quotes': ['error', 'single', { 'avoidEscape': true }],
-    'linebreak-style': ['error', 'unix'],
-    'indent': ['error', 2]
-  },
-  settings: {
-    'import/resolver': {
-      alias: {
-        extensions: ['.js'],
-        map: [
-          ['#src', srcPath]
+    'camelcase': ["warn", { "properties": "never" }],
+    '@typescript-eslint/naming-convention': [
+      'warn',
+      {
+        selector: 'default',
+        format: ['camelCase', 'snake_case'],
+        leadingUnderscore: 'allow',
+        trailingUnderscore: 'allow',
+      },
+      {
+        selector: ['variable', 'objectLiteralProperty', 'typeProperty'],
+        format: ['camelCase', 'UPPER_CASE', 'snake_case'],
+        leadingUnderscore: 'allow',
+        trailingUnderscore: 'allow',
+      },
+      {
+        selector: 'typeLike',
+        format: ['PascalCase'],
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc'
+        },
+        groups: [
+          'builtin',
+          'internal',
+          'external',
+          [
+            'sibling',
+            'parent'
+          ],
+          'index',
+          'object',
+          'type'
+        ],
+        'newlines-between': 'never',
+        pathGroups: [
+          {
+            group: 'parent',
+            pattern: '@/**'
+          }
         ]
       }
-    }
+    ],
+    indent: [
+      'error',
+      2
+    ],
+    'linebreak-style': [
+      'error',
+      'unix'
+    ],
+    quotes: [
+      'error',
+      'single',
+      {
+        allowTemplateLiterals: true,
+        avoidEscape: true
+      }
+    ],
+    semi: [
+      'error',
+      'always'
+    ],
+    'sort-destructure-keys/sort-destructure-keys': 'error',
+    'sort-imports': [
+      'error',
+      {
+        ignoreDeclarationSort: true
+      }
+    ],
+    'sort-keys-fix/sort-keys-fix': 'error',
+    'space-before-function-paren': 0
   }
-}
+};

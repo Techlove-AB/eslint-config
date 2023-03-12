@@ -1,4 +1,6 @@
-# @techlove/eslint-config
+# @techlove/eslint-config@2
+
+This is `v2`. It targets TypeScript and Next.js. For the JavaScript version, use the `v1` branch, or the package `@techlove/eslint-config@1`.
 
 ## Installation
 ```bash
