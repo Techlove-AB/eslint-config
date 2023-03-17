@@ -16,26 +16,26 @@ module.exports = {
   ],
   root: true,
   rules: {
-    'camelcase': ["warn", { "properties": "never" }],
     '@typescript-eslint/naming-convention': [
       'warn',
       {
-        selector: 'default',
         format: ['camelCase', 'snake_case'],
         leadingUnderscore: 'allow',
-        trailingUnderscore: 'allow',
+        selector: 'default',
+        trailingUnderscore: 'allow'
       },
       {
-        selector: ['variable', 'objectLiteralProperty', 'typeProperty'],
-        format: ['camelCase', 'UPPER_CASE', 'snake_case'],
+        format: ['camelCase', 'UPPER_CASE', 'snake_case', 'PascalCase'],
         leadingUnderscore: 'allow',
-        trailingUnderscore: 'allow',
+        selector: ['variable', 'objectLiteralProperty', 'typeProperty'],
+        trailingUnderscore: 'allow'
       },
       {
-        selector: 'typeLike',
         format: ['PascalCase'],
-      },
+        selector: 'typeLike'
+      }
     ],
+    camelcase: ['warn', { properties: 'never' }],
     'import/order': [
       'error',
       {
