@@ -16,7 +16,7 @@
   "author": "zentus",
   "license": "MIT",
   "peerDependencies": {
-    "eslint": "8.35.0"
+    "eslint": "^8.35.0"
   },
   "dependencies": {
     "@rushstack/eslint-patch": "1.2.0",
@@ -29,7 +29,7 @@
     "@typescript-eslint/parser": "5.54.1"
   },
   "devDependencies": {
-    "eslint": "8.35.0"
+    "eslint": "^8.35.0"
   },
   "publishConfig": {
     "@techlove:registry": "https://npm.pkg.github.com"
