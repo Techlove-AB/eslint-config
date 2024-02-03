@@ -1,3 +1,5 @@
+require('@techlove/eslint-config/patch');
+
 module.exports = {
   extends: [
     'standard',
@@ -5,91 +7,87 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended'
   ],
-  ignorePatterns: ['scripts'],
+  ignorePatterns: ['scripts', 'node_modules'],
   parser: '@typescript-eslint/parser',
   plugins: [
+    '@stylistic/ts',
     '@typescript-eslint',
+    'no-comments',
     'import',
     'sort-destructure-keys',
     'sort-keys-fix'
   ],
   root: true,
   rules: {
-    '@typescript-eslint/naming-convention': [
-      'warn',
-      {
-        format: ['camelCase', 'snake_case'],
-        leadingUnderscore: 'allow',
-        selector: 'default',
-        trailingUnderscore: 'allow'
+    '@stylistic/ts/brace-style': [2, '1tbs'],
+    '@stylistic/ts/comma-dangle': [2, 'never'],
+    '@stylistic/ts/indent': [2, 2],
+    '@stylistic/ts/key-spacing': [2, { mode: 'strict' }],
+    '@stylistic/ts/member-delimiter-style': [2, {
+      multiline: {
+        delimiter: 'semi',
+        requireLast: true
       },
+      multilineDetection: 'brackets',
+      singleline: {
+        delimiter: 'semi',
+        requireLast: false
+      }
+    }],
+    '@stylistic/ts/object-curly-spacing': [2, 'always'],
+    '@stylistic/ts/padding-line-between-statements': [2,
       {
-        format: ['camelCase', 'UPPER_CASE', 'snake_case', 'PascalCase'],
-        leadingUnderscore: 'allow',
-        selector: ['variable', 'objectLiteralProperty', 'typeProperty'],
-        trailingUnderscore: 'allow'
-      },
-      {
-        format: ['PascalCase'],
-        selector: 'typeLike'
+        blankLine: 'always',
+        next: ['interface', 'type', 'export'],
+        prev: '*'
       }
     ],
-    camelcase: ['warn', { properties: 'never' }],
-    'import/order': [
-      'error',
-      {
-        alphabetize: {
-          order: 'asc'
-        },
-        groups: [
-          'builtin',
-          'internal',
-          'external',
-          [
-            'sibling',
-            'parent'
-          ],
-          'index',
-          'object',
-          'type'
-        ],
-        'newlines-between': 'never',
-        pathGroups: [
-          {
-            group: 'parent',
-            pattern: '@/**'
-          }
-        ]
-      }
-    ],
-    indent: [
-      'error',
-      2
-    ],
-    'linebreak-style': [
-      'error',
-      'unix'
-    ],
-    quotes: [
-      'error',
-      'single',
-      {
+    '@typescript-eslint/naming-convention': 0,
+    '@typescript-eslint/no-explicit-any': 1,
+    'sort-destructure-keys/sort-destructure-keys': 2,
+    'sort-imports': [2, {
+      ignoreDeclarationSort: true
+    }],
+    'sort-keys-fix/sort-keys-fix': 2,
+    'camelcase': 0,
+    'space-before-function-paren': 0,
+    'newline-before-return': 2,
+    'no-comments/disallowComments': [2],
+    'no-mixed-spaces-and-tabs': 2,
+    'no-multiple-empty-lines': [2, { max: 1 }],
+    'no-tabs': 2,
+    'semi': [2, 'always'],
+    'padded-blocks': [2, 'never'],
+    'linebreak-style': [2, 'unix'],
+    'quotes': [2,
+      'single', {
         allowTemplateLiterals: true,
         avoidEscape: true
       }
     ],
-    semi: [
-      'error',
-      'always'
-    ],
-    'sort-destructure-keys/sort-destructure-keys': 'error',
-    'sort-imports': [
-      'error',
-      {
-        ignoreDeclarationSort: true
-      }
-    ],
-    'sort-keys-fix/sort-keys-fix': 'error',
-    'space-before-function-paren': 0
+    'import/order': [2, {
+      alphabetize: {
+        order: 'asc'
+      },
+      groups: [
+        'builtin',
+        'internal',
+        'external',
+        [
+          'sibling',
+          'parent'
+        ],
+        'index',
+        'object',
+        'type'
+      ],
+      'newlines-between': 'never',
+      pathGroups: [
+        {
+          group: 'parent',
+          pattern: '@/**'
+        }
+      ]
+    }],
   }
 };
