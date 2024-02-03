@@ -56,6 +56,7 @@ module.exports = {
     'no-mixed-spaces-and-tabs': 2,
     'no-multiple-empty-lines': [2, { max: 1 }],
     'no-tabs': 2,
+    'indent': 0,
     'semi': [2, 'always'],
     'padded-blocks': [2, 'never'],
     'linebreak-style': [2, 'unix'],
