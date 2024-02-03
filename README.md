@@ -24,6 +24,8 @@ module.exports = {
 };
 ```
 
+If you're using React:
+
 ```typescript
 require('@techlove/eslint-config/patch');
 
