@@ -1,6 +1,6 @@
 {
   "name": "@techlove/eslint-config",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "An ESLint config",
   "repository": "https://github.com/techlove/eslint-config.git",
   "main": "index.js",
