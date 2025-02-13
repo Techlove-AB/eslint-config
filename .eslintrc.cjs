@@ -51,6 +51,7 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/no-unresolved': 'error',
     'import/order': rules.importOrder,
+    'no-useless-escape': 0,
     'prefer-destructuring': 'error',
     'sort-destructure-keys/sort-destructure-keys': 'error',
     'sort-imports': rules.sortImports,
@@ -58,7 +59,8 @@ module.exports = {
     'semi': ["error", "always"],
     'quotes': ['error', 'single', { 'avoidEscape': true }],
     'linebreak-style': ['error', 'unix'],
-    'indent': ['error', 2]
+    'indent': ['error', 2],
+    'space-before-function-paren': 0
   },
   settings: {
     'import/resolver': {

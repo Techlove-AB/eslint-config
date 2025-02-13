@@ -2,7 +2,7 @@
 
 ## Installation
 ```bash
-npm install @techlove/eslint-config
+npm install @techlove/eslint-config-zen eslint@8 --save-dev
 ```
 
 ## Setup
